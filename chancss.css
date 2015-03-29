@@ -1,0 +1,376 @@
+
+::-webkit-scrollbar {width:5px;}
+/*::-webkit-scrollbar-button {background-color:rgba(26,26,26,1);}*/
+::-webkit-scrollbar-track {background-color:rgba(26,26,26,1);}
+::-webkit-scrollbar-track-piece {background-color:rgba(61,61,61,1);}
+::-webkit-scrollbar-thumb {background-color: hsla(0,0%,60%,1); width: 3px;}
+::-webkit-scrollbar-corner {background-color:rgba(26,26,26,1);}
+
+.jqshow{height: auto !important; opacity: 1; visibility: visible;}
+.input-group .form-control {
+	background-color: hsl(0, 0%, 24%)!important;
+	border: 1px solid hsl(0, 0%, 31%);
+	border-radius: 0;
+}
+.input-group .input-group-btn, .input-group .input-group-btn button {
+	background: hsl(0, 0%, 31%);
+	border-radius: 0;
+	border: none;
+}
+.input-group .input-group-btn button:hover {
+	background: hsl(0, 0%, 24%);
+}
+input[type="checkbox"] {
+	border: 1px solid hsl(0, 0%, 31%);
+	width: 15px;
+	height: 15px;
+	margin-bottom: 10px;
+	top: -1px;
+	background: transparent;
+	appearance: none;
+	-webkit-appearance: none;
+	-moz-appearance:none;
+}
+input[type="checkbox"]:checked {background: hsl(0,0%,5%)}
+input[type="checkbox"]:checked:after {
+	content: "■";
+	width: 9px;
+	height: 9px;
+	position: absolute;
+	margin-top: 2px;
+	margin-left: 2px;
+	color: transparent;
+	font-size: 0;
+	background: hsl(0,0%,31%);
+}
+.checkbox {
+	color: hsl(0, 0%, 56%);
+}
+.label {
+	border-radius: 0;
+	background: none;
+}
+.label-success {
+	background: hsl(0,0%,20%);
+}
+
+#wrap {
+	background: hsl(0,0%,6%);
+}
+#arendelle {
+	display: none;
+}
+/*Positioning*/
+#wrap{padding: 0;}
+#motdrow {
+	width: 100%;
+	margin: 0;
+}
+#motdrow .col-lg-12{
+	width: 100%;
+	padding: 0;
+}
+#announcements,.container-fluid .col-md-12,#motd .text-center {
+	width: auto;
+}
+.row:after{
+		clear: none;
+}
+.container-fluid .col-lg-12, .row {
+	padding-right: 0;
+}
+div#videowrap {
+	margin-bottom: 9px !important;
+	float: none !important;
+}
+
+
+#chatwrap {
+	padding: 0;
+}
+#mainpage>.container-fluid {
+	padding: 0;
+	margin: 0 !important;
+}
+#footer {
+	height: 40px;
+	float: left;
+	width: 100%;
+}
+@media (min-width: 992px){
+	#userlist, #messagebuffer {
+		height: calc(100% - 38px) !important;
+	}
+	#chatwrap {
+		height: calc(100% - 60px) !important;
+	}
+	#chatwrap {
+		width: 41.66666667%; 
+		float: right;
+		display: block;
+		position: fixed;
+		bottom: 0;
+		right: 1px;
+		margin-bottom: 0;
+
+	}
+	#mainpage>.container-fluid {
+		width: 58%;
+	}
+	.col-md-7 {
+		width: 100%;;
+	}
+	.container-fluid {
+		position: fixed;
+		overflow-y: scroll;
+		overflow-x: hidden;
+		height: calc(100% - 60px);
+		padding: 0 9px 0 9px !important;
+	}
+	#footer .container {
+		width: 100%;
+	}
+	#videowrap {
+		padding: 0;
+		padding-left: 15px;
+		padding-right: 15px;
+	}
+}
+
+/*Left Container*/
+
+
+
+
+/*Chat*/
+	/*Userlist*/
+	#userlist::-webkit-scrollbar {
+		width: 1px;
+	}
+	#userlist::-webkit-scrollbar-track {
+		background: none;
+	}
+	#userlisttoggle {
+		position: absolute;
+		top: 3px;
+		right: 3px;
+	}
+	/*Chat header (time and toggles)*/
+	#connected {
+		float: left;
+		width: 100%;
+	}
+	#chatheader {
+		min-height: 17px;
+		width: 100%;
+	}
+		#clockstaff {
+			float: right;
+			border-bottom: 1px solid #fff;
+		}
+		#emotetoggle, #capturebutton, #jointoggle {
+			float: left !important;
+		}
+	/*Chat bar*/
+	#chatline, #guestlogin>input, #guestlogin>.input-group-addon {
+		border-radius: 0;
+	}
+
+/*Below Video*/
+#mainpage .btn:focus {outline: none;}
+.textheader {
+	font-size: 24px;
+}
+	p#currenttitle, p.sectionheader {
+		font-family: Arial, sans-serif;
+		font-size: .9em;
+		letter-spacing: -0.03em;
+		color: hsl(0, 0%, 63%);
+		overflow-x: hidden;
+		float: none;
+		text-align: left;
+		height: auto;
+	}
+		.section {
+		padding: 12px 15px 5px 15px;
+		background: hsl(0, 0%, 12%);
+		border: 1px solid hsl(0, 0%, 18%);
+		border-radius: 0;
+		margin-bottom: 9px;
+	}
+	/*drinkbar*/
+	#drinkbarwrap {
+		display: block;
+		width: 100%;
+		height: auto;
+		margin-left: 0;
+		padding: 0 15 0 15;
+	}
+	/*Video Description*/	
+	div#chatheader, p#currenttitle {
+		border: none;
+		border-radius: 0;
+		background: none;
+	}
+
+	/*Header right (Time and progbar)*/
+	#headright {
+		width: 160px;
+		height: 2px;
+		background: #ccc;
+		float: right;
+		position: relative;
+		margin-top: -7px;
+	}
+	#progbar {
+		width: 0;
+		height: 2px;
+		background: #167ac6;
+	}
+	#ss7time {
+		height: 24px;
+		position: relative;
+		float: right;
+		margin-top: -26px;
+		vertical-align: bottom;
+		font-size: 19px;
+		color: hsl(0, 0%, 56%);
+		line-height: 24px;
+	}
+	/*headerbuttons*/
+	#headbottom {
+		height: 34px;
+		margin-top: 9px;
+		border-top: 1px solid hsl(0, 0%, 20%);
+		padding: 5px 0 0 0;
+	}
+	#headbottom .headbtn {
+		height: 27px;
+		background: none;
+		color: hsl(0,0%,63%);
+		border: none;
+		border-radius: 0;
+		padding: 5px 0 5px 0;
+		box-shadow: none;
+		font-family: arial, sans-serif;
+		font-size: 14px;
+		font-weight: bold;
+		vertical-align: initial;
+	}
+	.headbtnleft {
+		margin-right: 20px;
+	}
+	.headbtn span {top:0;}
+	.headbtn:before {
+		filter: invert(63%) !important;
+		-webkit-filter: invert(63%) !important;
+		color: hsl(0,0%,63%);
+		font-family: arial, sans-serif;
+		font-weight: bold;
+	}
+	#voteskip, #mediarefresh {float: right}
+	#addmedia:after {content: "Add media";}
+	#addmedia:before {
+		background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAARCAMAAAAMs7fIAAAABlBMVEUAAAAAAAClZ7nPAAAAAXRSTlMAQObYZgAAABlJREFUeAFjgAJGRkYoi64ijOiAGJGBdTMAOMcAXg+QicwAAAAASUVORK5CYII=);
+		width: 17px !important;
+		height: 17px !important;
+		margin-right: 6px;
+		content: "n";
+		display: inline-block;
+		color: transparent;
+	}
+	#newpollbtn:before {
+		content: "n";
+		color: transparent;
+		display: inline-block;
+		width: 17px;
+		height: 17px;
+		margin-right: 6px;
+		background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAARCAYAAAA7bUf6AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAMZJREFUeNpiYCAPOAPxZiAWJlM/gxAQPwHi/1DalhxDVkMNgOEdpBqQjGbAWyCWJsUAFSD+jGZIICkGsADxCTQD5pDqjRY0A24DMQ8pBtgA8R8kA34BsSk2hcxAnAPEbGjifEB8H80V1dgMYATi+VAFq6EGwsBSNAMOo8nDwSw0hcugCqPQxN8DsTwuP2cD8T80DWugmpDFoggFXgGaBnS8lNhYKMNhwH1oABMNatEMAHnTl5wM1ohkQBEDBaADGk5EAYAAAwAM71Mk30wOEAAAAABJRU5ErkJggg==);
+		/*background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAARCAYAAAA7bUf6AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAALBJREFUeNpiYGBgYAPiiUD8Foj/k4DfQfWB9DNMIFEzOu5gIMMF6PgtI5RBEWAiUf03IF6FTYIUpydA9TSgiRNtwAKoAVxAfJUcQ65CNTNADftPyJDpQPwKif8ViLWgBsTjsASFMxmqWBvJoHiomBbUQIKGvIIaADOoB0844PUOskEMeMKBYMAiGxRPRMDjlAAZVI4nHFAMoTjvMAMJKSC2oCDrgGMUVp68I7c8AQgwAMf1zelY0GGiAAAAAElFTkSuQmCC);*/
+
+	}
+	/*Queue*/
+	#queue {
+		border: none;
+	}
+	.queue_entry {
+		border: none;
+	}
+		/*plmeta*/
+		#upnext #plmeta, #plcount {
+			border: none;
+			border-radius: 0;
+			background: none;
+			height: auto;
+			font-size: 14px;
+			display: inline;
+			color: #c8c8c8;
+		}
+		#queuecontainer > .textheader {
+			width: 100%;
+			padding-right: 17px;
+		}
+		#plmeta:before {content: " ("}
+		#plmeta:after {content: ")"}
+		#pllength {
+			display: none;
+		}
+		#pldropdown{
+			width: 17px;
+			height: 17px;
+			border: none;
+			padding: 0;
+			border-left: 8.5px solid transparent; /*width values are 1/2 of total button width*/
+			border-right: 8.5px solid transparent;
+			border-top: 8.5px solid hsl(0,0%,63%);
+			background: none;
+			float: right;
+			margin: 6px 0 0;
+		}
+
+
+	/*AddMedia*/
+	#rightpane {
+		float: none;
+		width: auto;
+		min-height: 0;
+		display: none;
+	}
+	#rightpane-inner {
+		transition: height 0.3s;
+	}
+	.plcontrol-collapse {
+		padding-left: 0;
+		float: none;
+	}
+		/*mediabuttons*/
+		#mediabuttons {
+			border-bottom: 1px solid hsl(0,0%,20%);
+		}
+		#mediabuttons .btn {
+			height: 28px;
+			background: none;
+			color: hsl(0,0%,50%);
+			border: none;
+			border-radius: 0;
+			padding: 0;
+			box-shadow: none;
+			margin-right: 20px;
+		}
+		#mediabuttons .btn span {
+			font-family: arial, sans-serif;
+			font-size: 15px;
+			font-weight: bold;
+			color: hsl(0,0%,50%);
+		}
+		#mediabuttons .btn:not(.collapsed) span {
+			color: hsl(0,0%,69%);
+		}
+		#mediabuttons .btn:not(.collapsed) {
+			border-bottom: 2px solid hsl(358, 79%, 45%);
+			box-sizing: content-box;
+		}
+		#showmediaurl span:before {content: "Link"}
+		#showcustomembed span:before {content: "Embed"}
+		#showsearch span:before {content: "Search"}a
