@@ -1,5 +1,5 @@
-//$('head').append("<link rel='stylesheet' href='http://zhuortho.tk/s/yepi.css' type='text/css' />");
-//$('head').append("<link rel='stylesheet' href='https://dl.dropboxusercontent.com/u/8444244/ChanCSS/chancss.css' type='text/css' />");
+//$('head').append("<link rel='stylesheet' href='https://rawgit.com/kenblu24/CyTheme/master/chancss.css' />"); //Adds up-to-date css from github
+
 /*
 Thanks to: Kuer, Xaekai
 
@@ -22,7 +22,7 @@ $("#main").after("<div id='videoinfo' class='section'></div>");//create box to c
 $("#main").after($("#drinkbarwrap"));
 $("#videoinfo").append("<div class='textheader'></div><div id='videoinfohead'><span id='addedbyTEXT'>Queued by <span id='addedby'></span></span><div id='headbottom'><div id='headright'><div id='ss7time' title='--:--'>0:00</div><div id='videolength'></div><div id='progbar'></div></div></div></div><div id='videoopts'></div>");
 $(".textheader").append($("#currenttitle")); //move video title below video player
-$("#headbottom").append("<button id='addmedia' title='Add Media' class='headbtn headbtnleft'></button>")
+$("#headbottom").append("<button id='addmedia' title='Add Media' class='headbtn headbtnleft'></button>");
 $("#headbottom").append($("#newpollbtn"));
 $("#newpollbtn").addClass("headbtn headbtnleft");
 
@@ -39,29 +39,33 @@ $("#mediabuttons").append($("#showmediaurl"));
 $("#mediabuttons").append($("#showcustomembed"));
 $("#mediabuttons").append($("#showsearch"));
 
-$("#rightpane").after("<div id='queuecontainer' class='section'><button id='pldropdown' title='Playlist Options'></button><div class='textheader'><p id='upnext' class='sectionheader'>Up Next</p></div></div>");
+$("#rightpane").after("<div id='queuecontainer' class='section'><button id='pldropdown' data-toggle='dropdown' title='Playlist Options'></button><div class='textheader'><p id='upnext' class='sectionheader'>Up Next</p></div></div>");
 $("#queuecontainer").append($("#queue"));
 $("#upnext").append($("#plmeta"));
+$("#pldropdown").after("<ul id='ploptions' class='dropdown-menu' role='menu'></ul>");
+$("#ploptions").append($("#showplaylistmanager"), $("#shuffleplaylist"));
 
 
 
-_time = {raw: 0, ofs: 0, paused: false};
+
+_time = {raw: 0, ofs: 0, paused: false};//Define time object for ss7's video time display plugin
 currentmedia = {istemp: false, location: 0, uid: 0, id: 0, seconds: 0, length: 0};
 playlistinfo = {length: 0};
 issplit = false;
+var tdur = 200;//Defines tdur, transition time (in ms)
 
-if (typeof(_changeMediaVIDEBLU) == 'undefined') { _changeMediaVIDEBLU = Callbacks.changeMedia; }
+if (typeof(_changeMediaVIDEBLU) == 'undefined') { _changeMediaVIDEBLU = Callbacks.changeMedia; }//Creates global variable _changeMediaVIDEBLU and sets it equal to old changeMedia() in Callbacks.js
 if (typeof(_playlistVIDEBLU) == 'undefined') { _playlistVIDEBLU = Callbacks.playlist; }
 if (typeof(_queueVIDEBLU) == 'undefined') { _queueVIDEBLU = Callbacks.queue; }
 if (typeof(_mediaupdateVIDEBLU) == 'undefined') { _mediaUpdateVIDEBLU = Callbacks.mediaUpdate; }
 
-Callbacks.queue = function(data) {
+Callbacks.queue = function(data) {//currently for debugging purposes only. Doesn't do anything.
 	_queueVIDEBLU(data);
-	console.log("Called Callbacks.queue")
+	console.log("Called Callbacks.queue");
 	console.log(data);
 }
 
-Callbacks.playlist = function(data) {
+Callbacks.playlist = function(data) {//currently for debugging purposes only. Doesn't do anything.
 	console.log("Called Callbacks.playlist");
 	console.log(data);
 	_playlistVIDEBLU(data);
@@ -88,10 +92,10 @@ function requeue (data) {
 }
 
 //function changeMedia2(){
-	Callbacks.changeMedia = function(data) {
-		_changeMediaVIDEBLU(data);
-		$("#currenttitle").text(data.title);
-		$("#ss7time").attr("title", data.duration);
+	Callbacks.changeMedia = function(data) {//Adds to the old changeMedia() in Callbacks.js, which is called when the media changes.
+		_changeMediaVIDEBLU(data);//call the old changeMedia() function stored.
+		$("#currenttitle").text(data.title);//change the text of #currenttitle to data.title (gets rid of "Currently Playing: " in video title)
+		$("#ss7time").attr("title", data.duration);//gets time of current video
 		currentmedia.length = data.duration;
 		currentmedia.id = data.id;
 		currentmedia.seconds = data.seconds;
@@ -102,11 +106,11 @@ function requeue (data) {
 //changeMedia2()
 
 //function mediaUpdate2() {
-	Callbacks.mediaUpdate = function(data) {
-		_mediaUpdateVIDEBLU(data);
-		_time.paused = data.paused;
-		_time.raw = Math.max(data.currentTime, 0);
-		_time.ofs = _time.raw - (new Date()).getTime()/1000;
+	Callbacks.mediaUpdate = function(data) {//Adds to the old mediaUpdate() in Callbacks.js, which is called every couple seconds.
+		_mediaUpdateVIDEBLU(data);//call the old mediaUpdate function stored.
+		_time.paused = data.paused;//stores data.paused in another variable. (Is video paused?)
+		_time.raw = Math.max(data.currentTime, 0);//stores the current video time position as _time.raw, to be used in setvideotime()
+		_time.ofs = _time.raw - (new Date()).getTime()/1000;//stores time offset, to keep the timer going between media updates
 	}
 //}
 //mediaUpdate2();
@@ -169,13 +173,13 @@ $("#addmedia").click(function(){
 		var i = 0;
 		$("#mediabuttons button").each(function() {
 			if ($(this).css("display") == "none") {return true;}
-			i++
+			i++;
 		});
-		if (i = 0) {$("#addfromurl").show().addClass('jqshow')}
-
+		if (i == 0) {$("#addfromurl").slideDown(tdur)}
+		$("#rightpane").slideDown(tdur);
 	}
-	elseif () {
-		$("#addfromurl").hide().removeClass('jqshow')
-		$("#rightpane").slideToggle(200);
+	else {
+		$("#addfromurl").hide().removeClass('jqshow');
+		$("#rightpane").slideUp(tdur);
 	}
 });
