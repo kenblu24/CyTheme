@@ -1,4 +1,4 @@
-//$('head').append("<link rel='stylesheet' href='https://rawgit.com/kenblu24/CyTheme/master/chancss.css' />"); //Adds up-to-date css from github
+
 
 /*
 Thanks to: Kuer, Xaekai
@@ -25,27 +25,28 @@ $(".textheader").append($("#currenttitle")); //move video title below video play
 $("#headbottom").append("<button id='addmedia' title='Add Media' class='headbtn headbtnleft'></button>");
 $("#headbottom").append($("#newpollbtn"));
 $("#newpollbtn").addClass("headbtn headbtnleft");
+$("#headbottom").append("<button id='morebtn' title='More Actions' data-toggle='dropdown' class='headbtn headbtnleft'></button>");
+$("#morebtn").after("<ul class='dropdown-menu'><li id='mediarefreshli'></li><li><button></button></li></ul>");
+$("#mediarefreshli").append($("#mediarefresh"));
+$("#mediarefresh").text("Refresh Video Player");
 
-$("#headbottom").append($("#mediarefresh"));
 $("#headbottom").append($("#voteskip"));
 $("#voteskip").addClass("headbtn");
-$("#mediarefresh").addClass("headbtn");
 
 $("#videoinfo").after($("#rightpane"));
 $("#rightpane-inner").prepend("<div id='mediabuttons'></div>");
 $("#rightpane-inner").addClass("section");
 
-$("#mediabuttons").append($("#showmediaurl"));
-$("#mediabuttons").append($("#showcustomembed"));
-$("#mediabuttons").append($("#showsearch"));
+$("#mediabuttons").append($("#showmediaurl"), $("#showcustomembed"), $("#showsearch"), $("#showplaylistmanager"));
 
 $("#rightpane").after("<div id='queuecontainer' class='section'><button id='pldropdown' data-toggle='dropdown' title='Playlist Options'></button><div class='textheader'><p id='upnext' class='sectionheader'>Up Next</p></div></div>");
 $("#queuecontainer").append($("#queue"));
 $("#upnext").append($("#plmeta"));
 $("#pldropdown").after("<ul id='ploptions' class='dropdown-menu' role='menu'></ul>");
-$("#ploptions").append($("#showplaylistmanager"), $("#shuffleplaylist"));
+$("#ploptions").append($("#shuffleplaylist"), $("#clearplaylist"), $("#getplaylist"));
+$("#pldropdown").after($("#qlockbtn"));
 
-
+//$('head').append("<link rel='stylesheet' href='https://rawgit.com/kenblu24/CyTheme/master/chancss.css' />"); //Adds up-to-date css from github
 
 
 _time = {raw: 0, ofs: 0, paused: false};//Define time object for ss7's video time display plugin
@@ -169,17 +170,20 @@ setvideotime = function() {
 setvideotime();
 
 $("#addmedia").click(function(){
-	if ($("#rightpane").css('display') == 'none'){
-		var i = 0;
+	if ($("#rightpane").css('display') == 'none'){//if add media is hidden
 		$("#mediabuttons button").each(function() {
-			if ($(this).css("display") == "none") {return true;}
-			i++;
+			if ($(this).css("display") != "none") {
+				if ($(this).hasClass("collapsed")){
+					$(this).trigger("click");
+				}
+				return false;
+			}//if button is clickable
 		});
-		if (i == 0) {$("#addfromurl").slideDown(tdur)}
 		$("#rightpane").slideDown(tdur);
 	}
 	else {
-		$("#addfromurl").hide().removeClass('jqshow');
 		$("#rightpane").slideUp(tdur);
 	}
 });
+
+$("#morebtn").click(function(event){$("#headbottom .dropdown-menu").css("left", event.clientX - 50 + "px");});
