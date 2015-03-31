@@ -1,9 +1,17 @@
 
-::-webkit-scrollbar {width:5px;}
+::-webkit-scrollbar {
+	width:5px;
+	border: 1px solid hsl(0,0%,27%);
+	border-top: 0;border-bottom: 0;
+}
 /*::-webkit-scrollbar-button {background-color:rgba(26,26,26,1);}*/
-::-webkit-scrollbar-track {background-color:rgba(26,26,26,1);}
-::-webkit-scrollbar-track-piece {background-color:rgba(61,61,61,1);}
-::-webkit-scrollbar-thumb {background-color: hsla(0,0%,60%,1); width: 3px;}
+::-webkit-scrollbar-track {
+	background-color:hsl(0,0%,27%);
+}
+::-webkit-scrollbar-thumb {
+	background-color: hsl(0,0%,60%);
+	border: 1px solid hsl(0,0%,40%);
+}
 ::-webkit-scrollbar-corner {background-color:rgba(26,26,26,1);}
 .input-group .form-control, .form-control {
 	background-color: hsl(0, 0%, 24%)!important;
@@ -14,8 +22,10 @@
 .input-group .input-group-btn, .input-group .input-group-btn button {
 	background: hsl(0, 0%, 31%);
 	border-radius: 0;
-	border: none;
+	border: 0;
+	box-shadow: inset 0px 0px 10px -1px hsl(0, 0%, 10%);;
 }
+.btn-default[disabled], .btn.disabled, .btn[disabled], fieldset[disabled] .btn {opacity: 0.63}
 .input-group .input-group-btn button:hover {
 	background: hsl(0, 0%, 24%);
 }
@@ -45,13 +55,13 @@ input[type="checkbox"]:checked:after {
 .checkbox {
 	color: hsl(0, 0%, 56%);
 }
-.label {
+/*.label {
 	border-radius: 0;
 	background: none;
 }
 .label-success {
 	background: hsl(0,0%,20%);
-}
+}*/
 .alert {
 	border-radius: 0;
 	margin-bottom: 9px;
@@ -121,14 +131,22 @@ div#videowrap {
 	width: 100%;
 }
 @media (min-width: 992px){
-	#userlist, #messagebuffer {
-		height: calc(100% - 38px) !important;
+	/*chat bar is 38 px high*/
+	#messagebuffer {
+		height: calc(100% - 59px) !important;
+	}
+	#userlist {
+		height: calc(100% - 59px) !important;
+
 	}
 	#chatwrap {
 		height: calc(100% - 60px) !important;
 	}
+	#messagebuffer{
+		box-shadow: inset 0 0 50px 0px hsl(0,0%,0%);
+	}
 	#chatwrap {
-		width: 41.66666667%; 
+		width: 42%;
 		float: right;
 		display: block;
 		position: fixed;
@@ -170,32 +188,57 @@ div#videowrap {
 }
 
 /*Left Container*/
-
+#videowrap .embed-responsive {
+	background: hsl(0,0%,0%); /*fixes transparent videos*/
+}
 
 
 
 /*Chat*/
+	div#messagebuffer, div#userlist {
+		border: 1px solid hsl(0, 0%, 18%);
+		background: hsl(0,0%,12%);
+	}
+	.nick-hover {
+		background-color: hsl(0,0%,5%);
+	}
+	#chatline {
+
+	}
 	/*Userlist*/
+	#mainpage #userlist {
+		border-top: 0;
+	}
 	#userlist::-webkit-scrollbar {
 		width: 1px;
 	}
 	#userlist::-webkit-scrollbar-track {
-		background: none;
-	}
-	#userlisttoggle {
-		position: absolute;
-		top: 3px;
-		right: 3px;
+		display: none;
+		background: transparent;
+		border: 0;
 	}
 	/*Chat header (time and toggles)*/
 	#connected {
 		float: left;
 		width: 100%;
 	}
-	#chatheader {
-		min-height: 17px;
+	#mainpage #chatheader {
+		height: 21px;
 		width: 100%;
+		background-color: hsl(0,0%,12%);
+		border: 1px solid hsl(0,0%,18%);
+		border-bottom: 0;
 	}
+		#chatheader span {
+			border: 0;
+			border-radius: 0;
+			padding: 4px 7px 5px;
+			background: hsl(0,0%,31%);
+		}
+		#chatheader span.label-success {
+			border-bottom: 2px solid hsl(358, 79%, 45%);
+			background: hsl(0,0%,31%);
+		}
 		#clockstaff {
 			float: right;
 			border-bottom: 1px solid #fff;
@@ -239,7 +282,7 @@ div#videowrap {
 		margin-left: 0;
 		padding: 0 15 0 15;
 	}
-	/*Video Description*/	
+	/*Video Description*/
 	div#chatheader, p#currenttitle {
 		border: none;
 		border-radius: 0;
@@ -469,7 +512,7 @@ div#videowrap {
 	#controlsrow:after {clear: both;}
 	#leftcontrols, #rightcontrols {
 		width: auto;
-		
+
 	}
 	/*Message of the day*/
 	#motdwrap {

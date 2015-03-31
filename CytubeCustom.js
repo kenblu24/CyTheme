@@ -1,5 +1,4 @@
 
-
 /*
 Thanks to: Kuer, Xaekai
 
@@ -12,11 +11,11 @@ $(".container-fluid").append($("#footer"));//move footer into mainpage element
 
 //move chat elements
 $("#mainpage").prepend($("#chatwrap"));//move chat element outside left container
-$("#userlist").prepend($("#chatheader"));//move chat header(user toggles) to userlist
-$("#chatheader").after( "<div id='connected'></div>");//create div to contain user count
+//$("#userlist").prepend($("#chatheader"));//move chat header(user toggles) to userlist
+$("#userlist").prepend("<div id='connected'></div>");//create div to contain user count
 $("#connected").append($("#usercount"));//move user count into previously created div
 //$("#connected").append( "<span id='connectedText'>&nbsp Connected</span>" );//add "Connected" after user count
-$("#chatwrap").append($("#userlisttoggle"));//move user count to chat wrap element
+//$("#chatwrap").append($("#userlisttoggle"));//move user count to chat wrap element
 
 $("#main").after("<div id='videoinfo' class='section'></div>");//create box to contain video title, description, and playlist options.
 $("#main").after($("#drinkbarwrap"));
@@ -138,7 +137,7 @@ replacekuerscript()*/
 }*/
 
 //Code Author: Xaekai
-/*function playlist(){ 
+/*function playlist(){
 	var _playlist=[];
 	$("#queue > .queue_entry").each(function(){
 		var data = $(this).data();
@@ -153,7 +152,7 @@ replacekuerscript()*/
 setvideotime = function() {
 	var t = _time.paused ? _time.raw : (new Date()).getTime()/1000 + _time.ofs; //
 	var percenttime = Math.round(t * 160 / currentmedia.seconds);
-	if (percenttime > 160) {percenttime = 0}	
+	if (percenttime > 160) {percenttime = 0}
 	$("#progbar").css("width", percenttime + "px");
 	setTimeout(setvideotime, 1000*(Math.round(t)+1 - t)); //Update time every second
 	t = Math.round(t);
