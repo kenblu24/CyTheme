@@ -9,6 +9,7 @@
 	background-color: hsl(0, 0%, 24%)!important;
 	border: 1px solid hsl(0, 0%, 31%);
 	border-radius: 0;
+	color: hsl(0, 0%, 63%);
 }
 .input-group .input-group-btn, .input-group .input-group-btn button {
 	background: hsl(0, 0%, 31%);
@@ -419,9 +420,10 @@ div#videowrap {
 		width: 100%;
 		margin: 0;
 	}
-	#rightpane .col-md-12 {
+	#rightpane-inner .col-md-12 {
 		width: 100%;
 		padding: 0;
+		float: none;
 	}
 		/*mediabuttons*/
 		#mediabuttons {

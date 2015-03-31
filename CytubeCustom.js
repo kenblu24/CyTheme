@@ -187,3 +187,10 @@ $("#addmedia").click(function(){
 });
 
 $("#morebtn").click(function(event){$("#headbottom .dropdown-menu").css("left", event.clientX - 50 + "px");});
+
+/*
+▄██████████████▄▐█▄▄▄▄█▌
+██████▌▄▌▄▐▐▌███▌▀▀██▀▀
+████▄█▌▄▌▄▐▐▌▀███▄▄█
+▄▄▄▄▄██████████████▀
+*/
