@@ -217,6 +217,16 @@ div#videowrap {
 		background: transparent;
 		border: 0;
 	}
+		/*profile boxes*/
+		#userlist .profile-box {
+			border: 0;
+			border-radius: 0;
+			box-shadow: 0 0 40px 0 hsl(0,0%,0%);
+			padding-top: 0;
+		}
+		#userlist .profile-box .profile-image {
+
+		}
 	/*Chat header (time and toggles)*/
 	#connected {
 		float: left;
