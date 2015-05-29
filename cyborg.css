@@ -1,0 +1,217 @@
+﻿
+/*Scrollbars*/
+::-webkit-scrollbar {
+	width:5px;
+	border: 1px solid hsl(0,0%,27%);
+	border-top: 0;border-bottom: 0;
+}
+/*::-webkit-scrollbar-button {background-color:rgba(26,26,26,1);}*/
+::-webkit-scrollbar-track {
+	background-color:hsl(0,0%,27%);
+}
+::-webkit-scrollbar-thumb {
+	background-color: hsl(0,0%,60%);
+	border: 1px solid hsl(0,0%,40%);
+}
+::-webkit-scrollbar-corner {background-color:rgba(26,26,26,1);}
+
+
+/*Inputs*/
+.input-group .form-control, .form-control {
+	background-color: hsl(0, 0%, 24%)!important;
+	border: 1px solid hsl(0, 0%, 31%);
+	color: hsl(0, 0%, 63%);
+}
+.input-group .input-group-btn, .input-group .input-group-btn button {
+	background: hsl(0, 0%, 31%);
+	box-shadow: inset 0px 0px 10px -1px hsl(0, 0%, 10%);
+}
+.btn-default[disabled], .btn.disabled, .btn[disabled], fieldset[disabled] .btn {opacity: 0.63}
+.input-group .input-group-btn button:hover {
+	background: hsl(0, 0%, 24%);
+}
+input[type="checkbox"] {
+	border: 1px solid hsl(0, 0%, 31%);
+}
+input[type="checkbox"]:checked {background: hsl(0,0%,5%)}
+input[type="checkbox"]:checked:after {
+	background: hsl(0,0%,31%);
+}
+.checkbox {
+	color: hsl(0, 0%, 56%);
+}
+
+
+
+/*Dropdowns and Context Menus*/
+	/*Bootstrap Dropdowns*/
+	.dropdown-menu, .user-dropdown {
+		background: hsl(0,0%,12%);
+		border: 1px solid hsl(0,0%,18%);
+		box-shadow: 0 0 20px 0 hsl(0,0%,0%);
+	}
+	.dropdown-menu>li>a:focus, .dropdown-menu button:hover {
+		color: hsl(0,0%,100%);
+		background: hsl(199,68%,50%);
+	}
+	.dropdown-menu button{
+		color: hsl(0,0%,100%);
+	}
+
+
+
+
+
+
+.navbar {
+	background: hsl(0,0%,13%);
+	color: hsl(0,0%,53%);
+	border: none;
+}
+.navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus, .navbar-inverse .navbar-nav>.active>a:hover, .navbar-inverse .navbar-nav>li>a:focus, .navbar-inverse .navbar-nav>li>a:hover, .navbar-inverse .navbar-link:hover {
+	color: hsl(0,0%,100%);
+}
+.navbar-inverse .navbar-brand:focus, .navbar-inverse .navbar-brand:hover {
+	color: hsl(0,0%,100%);
+}
+.navbar-inverse .navbar-brand {
+	color: hsl(0,0%,100%);
+}
+
+#wrap { /*body*/
+	background: hsl(0,0%,6%);
+}
+
+
+@media (min-width: 992px){
+	/*chat bar is 38 px high*/
+	#messagebuffer{
+		box-shadow: inset 0 0 50px 0px hsl(0,0%,0%);
+	}
+}
+
+/*Left Container*/
+#videowrap .embed-responsive {
+	background: hsl(0,0%,0%); /*fixes transparent videos*/
+}
+
+
+
+/*Chat*/
+	div#messagebuffer, div#userlist {
+		border: 1px solid hsl(0, 0%, 18%);
+		background: hsl(0,0%,12%);
+	}
+	.nick-hover {
+		background-color: hsl(0,0%,5%);
+	}
+	#chatline {
+
+	}
+	/*Userlist*/
+		/*profile boxes*/
+		#userlist .profile-box {
+			background: hsl(0,0%,12%);
+			box-shadow: 0 0 20px 0 hsl(0,0%,0%);
+		}
+		#userlist .profile-box .profile-image {
+			box-shadow: 0 0 5px 0 hsl(0,0%,0%);
+		}
+			/*Specifially user dropdowns*/
+			.user-dropdown .btn-group-vertical {
+				border-top: 1px solid hsl(0,0%,18%);
+			}
+	.user-dropdown .btn-group-vertical .btn:hover {
+		background: hsl(199, 68%, 50%);
+	}
+	/*Chat header (time and toggles)*/
+	#mainpage #chatheader {
+		background-color: hsl(0,0%,12%);
+		border: 1px solid hsl(0,0%,18%);
+	}
+		#chatheader span {
+			background: hsl(0,0%,31%);
+		}
+		#chatheader span.label-success {
+			border-bottom: 2px solid hsl(358, 79%, 45%);
+			background: hsl(0,0%,31%);
+		}
+		#clockstaff {
+			border-bottom: 1px solid hsl(0,0%,100%);
+		}
+	/*Chat bar*/
+	#chatline, #guestlogin>input, #guestlogin>.input-group-addon {
+	}
+
+/*Below Video*/
+#mainpage .btn:focus {outline: none;}
+	p#currenttitle, p.sectionheader {
+		color: hsl(0, 0%, 63%);
+	}
+	.section, .well, #controlsrow {
+		background: hsl(0, 0%, 12%);
+		border: 1px solid hsl(0, 0%, 18%);
+	}
+	/*Video Description*/
+	/*Header right (Time and progbar)*/
+	#headright {
+		background: hsl(0,0%,80%);
+	}
+	#progbar {
+		background: hsl(206,80%,43%);
+	}
+	#ss7time {
+		color: hsl(0, 0%, 56%);
+	}
+	/*headerbuttons*/
+	#headbottom {
+		border-top: 1px solid hsl(0, 0%, 20%);
+	}
+	#headbottom .headbtn {
+		color: hsl(0,0%,63%);
+	}
+	.headbtnleft {
+		margin-right: 20px;
+	}
+	.headbtn:before {
+		filter: invert(63%) !important;
+		-webkit-filter: invert(63%) !important;
+		color: hsl(0,0%,63%);
+	}
+	button#voteskip[title="Voteskip"] {
+		color: hsl(0,0%,63%);
+	}
+	.headbtn span, #voteskip span {top: 0;}
+	#voteskip span:before {
+		filter: invert(63%) !important;
+		-webkit-filter: invert(63%) !important;
+	}
+
+	/*Queue*/
+		/*plmeta*/
+		#upnext #plmeta, #plcount {
+			color: hsl(0,0%,78%);
+		}
+		#qlockbtn span:before, #pldropdown {
+			-webkit-filter: invert(63%);
+			        filter: invert(63%);
+		}
+
+
+	/*AddMedia*/
+		/*mediabuttons*/
+		#mediabuttons {
+			border-bottom: 1px solid hsl(0,0%,20%);
+		}
+		#mediabuttons .btn {
+			color: hsl(0,0%,50%);
+		}
+		#mediabuttons .btn span {
+			color: hsl(0,0%,50%);
+		}
+		#mediabuttons .btn:not(.collapsed) span {
+			color: hsl(0,0%,69%);
+		}
+		#mediabuttons .btn:not(.collapsed) {
+			border-bottom: 2px solid hsl(358, 79%, 45%);
+		}

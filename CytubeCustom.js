@@ -1,4 +1,3 @@
-
 /*
 Thanks to: Kuer, Xaekai
 
@@ -30,7 +29,6 @@ $("#mediarefreshli").append($("#mediarefresh"));
 $("#mediarefresh").text("Refresh Video Player");
 
 $("#headbottom").append($("#voteskip"));
-$("#voteskip").addClass("headbtn");
 
 $("#videoinfo").after($("#rightpane"));
 $("#rightpane-inner").prepend("<div id='mediabuttons'></div>");
@@ -48,7 +46,7 @@ $("#pldropdown").after($("#qlockbtn"));
 //$('head').append("<link rel='stylesheet' href='https://rawgit.com/kenblu24/CyTheme/master/chancss.css' />"); //Adds up-to-date css from github
 
 
-_time = {raw: 0, ofs: 0, paused: false};//Define time object for ss7's video time display plugin
+_timeVIDEBLU = {raw: 0, ofs: 0, paused: false};//Define time object for ss7's video time display plugin
 currentmedia = {istemp: false, location: 0, uid: 0, id: 0, seconds: 0, length: 0};
 playlistinfo = {length: 0};
 issplit = false;
@@ -108,9 +106,9 @@ function requeue (data) {
 //function mediaUpdate2() {
 	Callbacks.mediaUpdate = function(data) {//Adds to the old mediaUpdate() in Callbacks.js, which is called every couple seconds.
 		_mediaUpdateVIDEBLU(data);//call the old mediaUpdate function stored.
-		_time.paused = data.paused;//stores data.paused in another variable. (Is video paused?)
-		_time.raw = Math.max(data.currentTime, 0);//stores the current video time position as _time.raw, to be used in setvideotime()
-		_time.ofs = _time.raw - (new Date()).getTime()/1000;//stores time offset, to keep the timer going between media updates
+		_timeVIDEBLU.paused = data.paused;//stores data.paused in another variable. (Is video paused?)
+		_timeVIDEBLU.raw = Math.max(data.currentTime, 0);//stores the current video time position as _timeVIDEBLU.raw, to be used in setvideotime()
+		_timeVIDEBLU.ofs = _timeVIDEBLU.raw - (new Date()).getTime()/1000;//stores time offset, to keep the timer going between media updates
 	}
 //}
 //mediaUpdate2();
@@ -150,7 +148,7 @@ replacekuerscript()*/
 
 //Massive thanks to ss7 for Video Time Display code.
 setvideotime = function() {
-	var t = _time.paused ? _time.raw : (new Date()).getTime()/1000 + _time.ofs; //
+	var t = _timeVIDEBLU.paused ? _timeVIDEBLU.raw : (new Date()).getTime()/1000 + _timeVIDEBLU.ofs; //
 	var percenttime = Math.round(t * 160 / currentmedia.seconds);
 	if (percenttime > 160) {percenttime = 0}
 	$("#progbar").css("width", percenttime + "px");
@@ -193,3 +191,5 @@ $("#morebtn").click(function(event){$("#headbottom .dropdown-menu").css("left", 
 ████▄█▌▄▌▄▐▐▌▀███▄▄█
 ▄▄▄▄▄██████████████▀
 */
+
+//$('head').append("<link rel='stylesheet' href='https://rawgit.com/kenblu24/CyTheme/master/chancss.css' />"); //Adds up-to-date css from github
