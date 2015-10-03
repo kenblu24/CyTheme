@@ -222,7 +222,6 @@ div#videowrap {
 
 	/*Chat header (time and toggles)*/
 	#connected {
-		float: left;
 		width: 100%;
 	}
 	#mainpage #chatheader {

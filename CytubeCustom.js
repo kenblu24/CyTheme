@@ -50,7 +50,7 @@ _timeVIDEBLU = {raw: 0, ofs: 0, paused: false};//Define time object for ss7's vi
 currentmedia = {istemp: false, location: 0, uid: 0, id: 0, seconds: 0, length: 0};
 playlistinfo = {length: 0};
 issplit = false;
-var tdur = 200;//Defines tdur, transition time (in ms)
+var trnsdelay = 200;//Defines trnsdelay, transition time (in ms)
 
 if (typeof(_changeMediaVIDEBLU) == 'undefined') { _changeMediaVIDEBLU = Callbacks.changeMedia; }//Creates global variable _changeMediaVIDEBLU and sets it equal to old changeMedia() in Callbacks.js
 if (typeof(_playlistVIDEBLU) == 'undefined') { _playlistVIDEBLU = Callbacks.playlist; }
@@ -84,7 +84,7 @@ function requeue (data) {
 	var _playlist=[];
 	$("#queue > .queue_entry").each(function(){
 		var data = $(this).data();
-		var addedby = $(this).attr("title").match(/: (\w+)$/)[1];
+		//var addedby = $(this).attr("title").match(/: (\w+)$/)[1];
 		_playlist.push({ uid: data.uid, media: data.media, temp: data.temp });
 	});
 }
@@ -97,8 +97,10 @@ function requeue (data) {
 		currentmedia.length = data.duration;
 		currentmedia.id = data.id;
 		currentmedia.seconds = data.seconds;
-		console.log("Loaded Video");
-		console.log(data);
+		var title = $("#queue .queue_active").attr("title");
+		$("#addedby").text(title.match(/(?:Added by: ){1}(.*)/)[1]);
+		console.log(data)
+		console.log("^callbacks.changeMedia")
 	}
 //}
 //changeMedia2()
@@ -176,10 +178,10 @@ $("#addmedia").click(function(){
 				return false;
 			}//if button is clickable
 		});
-		$("#rightpane").slideDown(tdur);
+		$("#rightpane").slideDown(trnsdelay);
 	}
 	else {
-		$("#rightpane").slideUp(tdur);
+		$("#rightpane").slideUp(trnsdelay);
 	}
 });
 
@@ -192,4 +194,6 @@ $("#morebtn").click(function(event){$("#headbottom .dropdown-menu").css("left", 
 ▄▄▄▄▄██████████████▀
 */
 
-//$('head').append("<link rel='stylesheet' href='https://rawgit.com/kenblu24/CyTheme/master/chancss.css' />"); //Adds up-to-date css from github
+//$('head').append("<link rel='stylesheet' href='https://cdn.rawgit.com/kenblu24/CyTheme/1be967c1774b4a51612fde8f3a451250a2a08019/base.css' />"); //Adds up-to-date css from github
+
+//$('head').append("<link rel='stylesheet' href='https://cdn.rawgit.com/kenblu24/CyTheme/1be967c1774b4a51612fde8f3a451250a2a08019/cyborg.css' />"); //Adds up-to-date css from github
