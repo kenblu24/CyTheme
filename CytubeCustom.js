@@ -3,6 +3,11 @@ Thanks to: Kuer, Xaekai
 
 */
 console.log("ranscript");
+
+//add settings to user prefs modal
+$("#useroptions .modal-header .nav.nav-tabs").append("<li class> <a href='#us-cytheme-controls' data-toggle='tab'>CyTheme Options</a></li>")
+$("#useroptions .modal-body .tab-content").append("<div id='us-cytheme-controls' class='tab-pane'><h4>CyTheme Options</h4><form action='javascript:void(0)' class='form-horizontal'></form></div>")
+
 //move site and channel descriptors
 $("#controlsrow").after($("#motdrow"));//move channel description (motd) below controls
 $("#controlsrow").after($("#announcements"));//move cytube announcements below controls
