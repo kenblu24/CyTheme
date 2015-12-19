@@ -1,4 +1,3 @@
-
 /*Scrollbars*/
 ::-webkit-scrollbar {
 	width:5px;
@@ -16,30 +15,56 @@
 ::-webkit-scrollbar-corner {background-color:rgba(26,26,26,1);}
 
 
-/*Inputs*/
-.input-group .form-control, .form-control {
-	background-color: hsl(0, 0%, 24%)!important;
-	border: 1px solid hsl(0, 0%, 31%);
-	color: hsl(0, 0%, 63%);
+
+body {
+	color: hsl(0,0%,70%);
 }
-.input-group .input-group-btn, .input-group .input-group-btn button {
-	background: hsl(0, 0%, 31%);
-	box-shadow: inset 0px 0px 10px -1px hsl(0, 0%, 10%);
-}
-.btn-default[disabled], .btn.disabled, .btn[disabled], fieldset[disabled] .btn {opacity: 0.63}
-.input-group .input-group-btn button:hover {
-	background: hsl(0, 0%, 24%);
-}
-input[type="checkbox"] {
-	border: 1px solid hsl(0, 0%, 31%);
-}
-input[type="checkbox"]:checked {background: hsl(0,0%,5%)}
-input[type="checkbox"]:checked:after {
-	background: hsl(0,0%,31%);
-}
-.checkbox {
-	color: hsl(0, 0%, 56%);
-}
+
+
+
+/* Inputs */
+	/* Text Inputs */
+	input.form-control[type="text"], input.form-control[type="password"], input.form-control[type="email"], textarea.form-control {
+		background-color: hsl(0, 0%, 24%)!important;
+		border: 1px solid hsl(0, 0%, 31%);
+		color: hsl(0, 0%, 63%);
+	}
+	input.form-control[type="text"]:focus, input.form-control[type="password"]:focus, input.form-control[type="email"]:focus, textarea.form-control:focus {
+		border: 1px solid hsl(207,75%,60%);
+	}
+
+	/* Buttons */
+	.input-group .input-group-btn, .input-group .input-group-btn button {
+		background: hsl(0, 0%, 24%);
+		border: 0;
+		box-shadow: none;
+		color: hsl(0, 0%, 63%);
+	}
+	.input-group .input-group-btn > button {
+		border: 1px solid hsl(0,0%,31%);
+	}
+	.input-group .input-group-btn button:hover {
+		background: hsl(0, 0%, 14%);
+	}
+	.input-group > span:first-of-type.input-group-btn > button {
+		border-left: 0;
+	}
+	.input-group > span:last-of-type.input-group-btn > button {
+		border-left: 0;
+	}
+	.btn-default[disabled], .btn.disabled, .btn[disabled], fieldset[disabled] .btn {opacity: 0.63}
+
+	/* Checkboxes */
+	input[type="checkbox"] {
+		border: 1px solid hsl(0, 0%, 31%);
+	}
+	input[type="checkbox"]:checked {background: hsl(0,0%,5%)}
+	input[type="checkbox"]:checked:after {
+		background: hsl(0,0%,31%);
+	}
+	.checkbox {
+		color: hsl(0, 0%, 56%);
+	}
 
 
 
@@ -70,6 +95,9 @@ input[type="checkbox"]:checked:after {
 }
 .navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus, .navbar-inverse .navbar-nav>.active>a:hover, .navbar-inverse .navbar-nav>li>a:focus, .navbar-inverse .navbar-nav>li>a:hover, .navbar-inverse .navbar-link:hover {
 	color: hsl(0,0%,100%);
+}
+.navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:hover, .navbar-inverse .navbar-nav>.open>a:focus {
+	background: hsl(199,68%,50%);
 }
 .navbar-inverse .navbar-brand:focus, .navbar-inverse .navbar-brand:hover {
 	color: hsl(0,0%,100%);
@@ -105,9 +133,7 @@ input[type="checkbox"]:checked:after {
 	.nick-hover {
 		background-color: hsl(0,0%,5%);
 	}
-	#chatline {
 
-	}
 	/*Userlist*/
 		/*profile boxes*/
 		#userlist .profile-box {
@@ -151,6 +177,7 @@ input[type="checkbox"]:checked:after {
 	.section, .well, #controlsrow {
 		background: hsl(0, 0%, 12%);
 		border: 1px solid hsl(0, 0%, 18%);
+		box-shadow: none;
 	}
 	/*Video Description*/
 	/*Header right (Time and progbar)*/
@@ -181,6 +208,8 @@ input[type="checkbox"]:checked:after {
 	button#voteskip[title="Voteskip"] {
 		color: hsl(0,0%,63%);
 	}
+	#voteskip:before {content: "Voteskip"; font-size: 14px;}
+	#voteskip span {top: 0;}
 	.headbtn span, #voteskip span {top: 0;}
 	#voteskip span:before {
 		filter: invert(63%) !important;

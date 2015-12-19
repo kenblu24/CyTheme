@@ -1,5 +1,4 @@
-﻿
-/*Inputs*/
+﻿/*Inputs*/
 .input-group .form-control, .form-control {
 	border-radius: 0;
 }
@@ -182,6 +181,7 @@ div#videowrap {
 		background: transparent;
 		border: 0;
 	}
+	#userlist {padding-left: 5px;}
 		/*profile boxes*/
 		#userlist .profile-box {
 			border: 0;

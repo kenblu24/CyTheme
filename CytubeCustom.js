@@ -1,6 +1,6 @@
 /*
-Thanks to: Kuer, Xaekai
-
+|Thanks to: Kuer, Xaekai[xaemae], ss7(supersaw7)
+|
 */
 console.log("ranscript");
 
@@ -173,7 +173,7 @@ setvideotime = function() {
 }
 setvideotime();
 
-$("#addmedia").click(function(){
+$("#addmedia").click(function(){ //Add Media button action
 	if ($("#rightpane").css('display') == 'none'){//if add media is hidden
 		$("#mediabuttons button").each(function() {
 			if ($(this).css("display") != "none") {
