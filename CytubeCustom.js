@@ -81,7 +81,7 @@ $("#chatwrap .nano").append($("#messagebuffer"));
 
 $(".nano").nanoScroller();
 
-$("#mainpage").append("<div id='dragdiv-left'> </div> <div id='dragdiv-right'></div>");
+$("#mainpage").append("<div id='mHandle-left'></div> <div id='mHandle-right'></div>");
 
 
 _timeVIDEBLU = {raw: 0, ofs: 0, paused: false};//Define time object for ss7's video time display plugin
@@ -199,7 +199,7 @@ setvideotime = function() {
 	if (m < 10) { m = '0'+m; }//9:9:09  ->  9:09:09
 	if (h < 10) { h = '0'+h; }//9:09:09 ->  09:09:09
 	if (currentmedia.seconds > 3598) {$('#ss7time').text(h+':'+m+':'+s);}//if media is longer than an hour
-	else if (h == 0) {$('#ss7time').text(m+':'+s);}//if less than an hour do not display hour metric
+	else if (h === 0) {$('#ss7time').text(m+':'+s);}//if less than an hour do not display hour metric
 	else if (currentmedia.length == "--:--") {$('#ss7time').text("Live")}// if "--:--" is length, set duration to "Live"
 }
 setvideotime();
@@ -224,6 +224,37 @@ $("#addmedia").click(function(){ //Add Media button action
 
 $("#morebtn").click(function(event){$("#headbottom .dropdown-menu").css("left", event.clientX - 50 + "px");});
 
+
+var updateScrollHandles = function() {
+	var scrollbar = $("#mainpage > .nano .nano-slider");
+	var scrollbarOffset = scrollbar.height()/2 + Number(scrollbar.attr("style").match(/\d+(?:.\d+)*(?=px\))/));
+	$("#mHandle-left").attr("style", "transform: translate(" + (0 - $("#mHandle-left").width() - scrollbar.width() - 1) + "px, " + (scrollbarOffset + $("#mHandle-left").height()/2) + "px);");
+	$("#mHandle-right").attr("style", "transform: translate(-1px, "+ (scrollbarOffset + $("#mHandle-right").height()/2) + "px);");
+}
+
+$("#mainpage > .nano .nano-pane").hover(function(eventData) {
+	updateScrollHandles();
+	$("#mainpage").addClass("scrollHover");
+	$(window).off("mousemove");
+}, function(eventData) {
+	if(eventData.which === 0) {
+		$("#mainpage").removeClass("scrollHover");
+	}
+	else {
+		$(window).one("mousemove", function(eventData2){
+			if(eventData2.which === 0)
+				$("#mainpage").removeClass("scrollHover");
+		});
+	}
+});
+
+$("#mainpage > .nano .nano-content").scroll(function() {
+	updateScrollHandles();
+});
+
+//$()
+
+//update scrollbar when chat changes
 var observer = new MutationObserver(function(mutations) {
 	mutations.forEach(function(mutation) {
 		$("#chatwrap .nano").nanoScroller();
@@ -240,12 +271,13 @@ new ResizeSensor($("#maincontain .container-fluid"),function() {
 	$("#mainpage > .nano").nanoScroller();
 });
 
+//fix for scrolling when hovering over new YT embed
 $("#maincontain .nano-slider").mousedown(function() {
 	$("#main").addClass("disablehover");
 	$(".disablehover").mouseenter(function(eventData) {
 		if(eventData.which == 0) {
 			$("#main").removeClass("disablehover");
-			$(this).off("mouseenter")
+			$(this).off("mouseenter");
 		}
 	});
 });

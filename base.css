@@ -185,6 +185,11 @@ div#videowrap {
 	#mainpage > .nano > .nano-pane {
 		display: none;
 	}
+	#mainpage > .nano .nano-content {
+		position: relative;
+		overflow: visible;
+	}
+	#mainpage > .nano .nano-pane {display: none !important; opacity: 0; visibility: hidden;}
 }
 @media (min-width: 992px){
 	/*chat bar is 38 px high*/
@@ -621,6 +626,23 @@ div#videowrap {
 	}
 
 /* Divider Dragger */
-#dragdiv-left, #dragdiv-right {
-
+#mHandle-left, #mHandle-right {
+	position: absolute;
+	width: 15px;
+	height: 25px;
+	left: 55%; /*default 55%*/
+	background: white;
+	opacity: 0;
+	transition: opacity ease .2s;
+}
+.scrollHover #mHandle-left, .scrollHover #mHandle-right {
+	opacity: .99;
+}
+#mHandle-left {
+	transform: translate(-21px, 0px); /*default -21px, 0*/
+	border-radius: 3px 0 0 3px;
+}
+#mHandle-right {
+	transform: translate(-1px, 0px); /*default -1px, 0*/
+	border-radius: 0 3px 3px 0;
 }
