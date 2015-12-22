@@ -1,6 +1,7 @@
-/*Scrollbars*/
+﻿/*Scrollbars*/
 ::-webkit-scrollbar {
-	width:5px;
+	width: 5px;
+	height: 10px;
 	border: 1px solid hsl(0,0%,27%);
 	border-top: 0;border-bottom: 0;
 }
@@ -11,10 +12,19 @@
 ::-webkit-scrollbar-thumb {
 	background-color: hsl(0,0%,60%);
 	border: 1px solid hsl(0,0%,40%);
+	border-radius: 3px;
 }
 ::-webkit-scrollbar-corner {background-color:rgba(26,26,26,1);}
 
-
+.darktheme .nano > .nano-pane > .nano-slider {
+	background: hsla(0,0%,100%,.56);
+	width: 5px;
+	float: right;
+}
+.darktheme .nano > .nano-pane {
+	background: none;
+	border-radius: 5px;
+}
 
 body {
 	color: hsl(0,0%,70%);
@@ -68,8 +78,8 @@ body {
 
 
 
-/*Dropdowns and Context Menus*/
-	/*Bootstrap Dropdowns*/
+/* Dropdowns and Context Menus */
+	/* Bootstrap Dropdowns */
 	.dropdown-menu, .user-dropdown {
 		background: hsl(0,0%,12%);
 		border: 1px solid hsl(0,0%,18%);
@@ -118,14 +128,14 @@ body {
 	}
 }
 
-/*Left Container*/
+/* Left Container */
 #videowrap .embed-responsive {
 	background: hsl(0,0%,0%); /*fixes transparent videos*/
 }
 
 
 
-/*Chat*/
+/* Chat */
 	div#messagebuffer, div#userlist {
 		border: 1px solid hsl(0, 0%, 18%);
 		background: hsl(0,0%,12%);
@@ -134,8 +144,8 @@ body {
 		background-color: hsl(0,0%,5%);
 	}
 
-	/*Userlist*/
-		/*profile boxes*/
+	/* Userlist*/
+		/* profile boxes */
 		#userlist .profile-box {
 			background: hsl(0,0%,12%);
 			box-shadow: 0 0 20px 0 hsl(0,0%,0%);
@@ -143,20 +153,26 @@ body {
 		#userlist .profile-box .profile-image {
 			box-shadow: 0 0 5px 0 hsl(0,0%,0%);
 		}
-			/*Specifially user dropdowns*/
+			/* Specifially user dropdowns */
 			.user-dropdown .btn-group-vertical {
 				border-top: 1px solid hsl(0,0%,18%);
 			}
 	.user-dropdown .btn-group-vertical .btn:hover {
 		background: hsl(199, 68%, 50%);
 	}
-	/*Chat header (time and toggles)*/
-	#mainpage #chatheader {
+	/* Chat header (time and toggles) */
+	#chatheader {
 		background-color: hsl(0,0%,12%);
 		border: 1px solid hsl(0,0%,18%);
+		overflow: hidden;
 	}
 		#chatheader span {
 			background: hsl(0,0%,31%);
+		}
+		#chatheader > .label, #chatheader > .label-default, #chatheader > .label-success, #chatheader i, #chatheader .custom-label {
+			height: 100% !important;
+			margin-top: 0 !important;
+			margin-bottom: 0 !important;
 		}
 		#chatheader span.label-success {
 			border-bottom: 2px solid hsl(358, 79%, 45%);
@@ -165,11 +181,11 @@ body {
 		#clockstaff {
 			border-bottom: 1px solid hsl(0,0%,100%);
 		}
-	/*Chat bar*/
+	/* Chat bar */
 	#chatline, #guestlogin>input, #guestlogin>.input-group-addon {
 	}
 
-/*Below Video*/
+/* Below Video */
 #mainpage .btn:focus {outline: none;}
 	p#currenttitle, p.sectionheader {
 		color: hsl(0, 0%, 63%);
@@ -179,8 +195,8 @@ body {
 		border: 1px solid hsl(0, 0%, 18%);
 		box-shadow: none;
 	}
-	/*Video Description*/
-	/*Header right (Time and progbar)*/
+	/* Video Description* /
+	/* Header right (Time and progbar) */
 	#headright {
 		background: hsl(0,0%,80%);
 	}
@@ -190,7 +206,7 @@ body {
 	#ss7time {
 		color: hsl(0, 0%, 56%);
 	}
-	/*headerbuttons*/
+	/* headerbuttons */
 	#headbottom {
 		border-top: 1px solid hsl(0, 0%, 20%);
 	}
@@ -216,19 +232,23 @@ body {
 		-webkit-filter: invert(63%) !important;
 	}
 
-	/*Queue*/
-		/*plmeta*/
+	/* Queue */
+		/* plmeta */
 		#upnext #plmeta, #plcount {
 			color: hsl(0,0%,78%);
 		}
-		#qlockbtn span:before, #pldropdown {
+		#qlockbtn span:before/*, #pldropdown*/ {
 			-webkit-filter: invert(63%);
 			        filter: invert(63%);
 		}
+		#pldropdown {
+			color: hsl(0,0%,63%);
+			font-weight: bold;
+		}
 
 
-	/*AddMedia*/
-		/*mediabuttons*/
+	/* AddMedia */
+		/* mediabuttons */
 		#mediabuttons {
 			border-bottom: 1px solid hsl(0,0%,20%);
 		}
@@ -244,3 +264,8 @@ body {
 		#mediabuttons .btn:not(.collapsed) {
 			border-bottom: 2px solid hsl(358, 79%, 45%);
 		}
+
+	/* Footer */
+	#footer {
+		background: hsl(0,0%,24%) !important;
+	}
