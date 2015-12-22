@@ -81,7 +81,7 @@ $("#chatwrap .nano").append($("#messagebuffer"));
 
 $(".nano").nanoScroller();
 
-//$('head').append("<link rel='stylesheet' href='https://rawgit.com/kenblu24/CyTheme/master/chancss.css' />"); //Adds up-to-date css from github
+$("#mainpage").append("<div id='dragdiv-left'> </div> <div id='dragdiv-right'></div>");
 
 
 _timeVIDEBLU = {raw: 0, ofs: 0, paused: false};//Define time object for ss7's video time display plugin
@@ -219,6 +219,7 @@ $("#addmedia").click(function(){ //Add Media button action
 	else {
 		$("#rightpane").slideUp(trnsdelay);
 	}
+
 });
 
 $("#morebtn").click(function(event){$("#headbottom .dropdown-menu").css("left", event.clientX - 50 + "px");});
@@ -239,13 +240,21 @@ new ResizeSensor($("#maincontain .container-fluid"),function() {
 	$("#mainpage > .nano").nanoScroller();
 });
 
+$("#maincontain .nano-slider").mousedown(function() {
+	$("#main").addClass("disablehover");
+	$(".disablehover").mouseenter(function(eventData) {
+		if(eventData.which == 0) {
+			$("#main").removeClass("disablehover");
+			$(this).off("mouseenter")
+		}
+	});
+});
+//$(window).mouseup(function(eventData) {mouseupped = true; console.log(eventData)});
+
+
 /*
 ▄██████████████▄▐█▄▄▄▄█▌
 ██████▌▄▌▄▐▐▌███▌▀▀██▀▀
 ████▄█▌▄▌▄▐▐▌▀███▄▄█
 ▄▄▄▄▄██████████████▀
 */
-
-//$('head').append("<link rel='stylesheet' href='https://cdn.rawgit.com/kenblu24/CyTheme/1be967c1774b4a51612fde8f3a451250a2a08019/base.css' />"); //Adds up-to-date css from github
-
-//$('head').append("<link rel='stylesheet' href='https://cdn.rawgit.com/kenblu24/CyTheme/1be967c1774b4a51612fde8f3a451250a2a08019/cyborg.css' />"); //Adds up-to-date css from github

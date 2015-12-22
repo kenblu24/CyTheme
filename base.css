@@ -41,6 +41,7 @@
 	  -moz-border-radius    : 5px;
 	  -webkit-border-radius : 5px;
 	  border-radius         : 5px;
+	  z-index: 999;
 	}
 	.nano > .nano-pane > .nano-slider {
 	  background: #444;
@@ -54,6 +55,17 @@
 	.nano:hover > .nano-pane, .nano-pane.active, .nano-pane.flashed {
 	  visibility : visible\9; /* Target only IE7 and IE8 with this hack */
 	  opacity    : 0.99;
+	}
+	/*nanoscroll video fix*/
+	#main::before {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		display: table;
+		z-index: 1;
+	}
+	.disablehover::before {
+		display: block !important;
 	}
 
 /*Inputs*/
@@ -176,6 +188,9 @@ div#videowrap {
 }
 @media (min-width: 992px){
 	/*chat bar is 38 px high*/
+	#main {
+		position: relative;
+	}
 	#chatwrap .nano {
 		height: calc(100% - 59px) !important;
 	}
@@ -247,8 +262,16 @@ div#videowrap {
 
 
 /*Chat*/
-	#chatwrap .nano {
-
+	#messagebuffer {
+		padding: 0;
+	}
+	#messagebuffer > div {
+		padding-left: 5px;
+		padding-right: 5px;
+	}
+	.server-msg-reconnect, .server-msg-disconnect {
+		margin-left: 5px;
+		margin-right: 5px;
 	}
 	/*Userlist*/
 	#mainpage #userlist {
@@ -596,3 +619,8 @@ div#videowrap {
 	#motdwrap {
 
 	}
+
+/* Divider Dragger */
+#dragdiv-left, #dragdiv-right {
+
+}
