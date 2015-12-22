@@ -11,18 +11,18 @@
 	  overflow      : scroll;
 	  overflow-x    : hidden;
 	  top           : 0;
-	  right         : 0;
+	  right         : 0 !important;
 	  bottom        : 0;
 	  left          : 0;
 	}
 	.nano > .nano-content:focus {
 	  outline: thin dotted;
 	}
-	.nano > .nano-content::-webkit-scrollbar {
-	  display: none;
-	}
 	.has-scrollbar > .nano-content::-webkit-scrollbar {
 	  display: block;
+	}
+	.nano > .nano-content::-webkit-scrollbar {
+	  display: none;
 	}
 	.nano > .nano-pane {
 	  display: block;
@@ -130,6 +130,7 @@ input[type="checkbox"]:checked:after {
 #motdrow {
 	width: 100%;
 	margin: 0;
+	overflow: hidden;
 }
 #motdrow .col-lg-12{
 	width: 100%;
@@ -160,7 +161,7 @@ div#videowrap {
 	width: 100%;
 }
 @media (max-width: 992px){
-	#mainpage .nano {
+	#mainpage > .nano {
 		position: static;
 	}
 	#mainpage .container-fluid {
@@ -169,14 +170,18 @@ div#videowrap {
 		padding-left: 1px;
 		padding-right: 1px;
 	}
-	#mainpage .nano-pane {
+	#mainpage > .nano > .nano-pane {
 		display: none;
 	}
 }
 @media (min-width: 992px){
 	/*chat bar is 38 px high*/
-	#messagebuffer {
+	#chatwrap .nano {
 		height: calc(100% - 59px) !important;
+	}
+	#chatwrap .nano #messagebuffer {
+		height: 100% !important;
+		width: 100%
 	}
 	#userlist {
 		height: calc(100% - 59px) !important;
@@ -201,13 +206,10 @@ div#videowrap {
 		width: 100%;
 		padding: 0 9px 0 9px;
 	}
-	#mainpage .container-fluid::-webkit-scrollbar {
-		display: none;
-	}
 	.col-md-7 {
 		width: 100%;;
 	}
-	#mainpage .nano {
+	#mainpage > .nano {
 		position: fixed;
 		overflow-y: visible; /*scroll pre-nano*/
 		overflow-x: hidden;
@@ -245,7 +247,7 @@ div#videowrap {
 
 
 /*Chat*/
-	#chatline {
+	#chatwrap .nano {
 
 	}
 	/*Userlist*/

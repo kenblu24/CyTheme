@@ -1,6 +1,7 @@
 ﻿/*Scrollbars*/
 ::-webkit-scrollbar {
-	width:5px;
+	width: 5px;
+	height: 10px;
 	border: 1px solid transparent;
 	border-top: 0;border-bottom: 0;
 }
@@ -11,10 +12,18 @@
 ::-webkit-scrollbar-thumb {
 	background-color: hsl(0,0%,50%);
 	border: 1px solid hsl(0,0%,80%);
+	border-radius: 3px;
 }
 ::-webkit-scrollbar-corner {background-color:rgba(26,26,26,1);}
 
-
+.darktheme .nano > .nano-pane > .nano-slider {
+	width: 5px;
+	float: right;
+}
+.darktheme .nano > .nano-pane {
+	background: none;
+	border-radius: 5px;
+}
 
 body {
 	color: hsl(0,0%,50%);
@@ -72,7 +81,6 @@ body {
 	/*Bootstrap Dropdowns*/
 	.dropdown-menu, .user-dropdown {
 		background: hsl(0,0%,100%);
-		border: none;
 		box-shadow: 0 0 20px 0 hsl(0,0%,0%);
 	}
 	.dropdown-menu>li>a:focus, .dropdown-menu button:hover, .user-dropdown .btn-group-vertical .btn:hover {
@@ -106,7 +114,7 @@ body {
 	color: hsl(0,0%,0%);
 }
 
-#wrap {
+#body {
 	background: hsl(0,0%,93%);
 }
 
@@ -151,12 +159,18 @@ body {
 		background: hsl(199, 68%, 50%);
 	}
 	/*Chat header (time and toggles)*/
-	#mainpage #chatheader {
+	#chatheader {
 		background-color: hsl(0,0%,100%);
 		box-shadow: 0 1px 2px rgba(0,0,0,.1);
+		overflow: hidden;
 	}
 		#chatheader span {
 			background: hsl(0,0%,31%);
+		}
+		#chatheader > .label, #chatheader > .label-default, #chatheader > .label-success, #chatheader i, #chatheader .custom-label {
+			height: 100% !important;
+			margin-top: 0 !important;
+			margin-bottom: 0 !important;
 		}
 		#chatheader span.label-success {
 			border-bottom: 2px solid hsl(358, 79%, 45%);
@@ -221,9 +235,13 @@ body {
 		#upnext #plmeta, #plcount {
 			color: hsl(0,0%,78%);
 		}
-		#qlockbtn span:before, #pldropdown {
+		#qlockbtn span:before/*, #pldropdown*/ {
 			-webkit-filter: invert(40%);
-					filter: invert(40%);
+			        filter: invert(40%);
+		}
+		#pldropdown {
+			color: hsl(0,0%,63%);
+			font-weight: bold;
 		}
 
 

@@ -25,7 +25,6 @@
 	background: none;
 	border-radius: 5px;
 }
-
 body {
 	color: hsl(0,0%,70%);
 }
@@ -116,7 +115,7 @@ body {
 	color: hsl(0,0%,100%);
 }
 
-#wrap { /*body*/
+body {
 	background: hsl(0,0%,6%);
 }
 
