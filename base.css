@@ -8,7 +8,7 @@
 	}
 	.nano > .nano-content {
 	  position      : absolute;
-	  overflow      : scroll;
+	  overflow      : hidden !important;
 	  overflow-x    : hidden;
 	  top           : 0;
 	  right         : 0 !important;
@@ -35,12 +35,7 @@
 	  bottom     : 0;
 	  visibility : hidden\9; /* Target only IE7 and IE8 with this hack */
 	  opacity    : .01;
-	  -webkit-transition    : .2s;
-	  -moz-transition       : .2s;
-	  -o-transition         : .2s;
 	  transition            : .2s;
-	  -moz-border-radius    : 5px;
-	  -webkit-border-radius : 5px;
 	  border-radius         : 5px;
 	  z-index: 999;
 	}
@@ -49,8 +44,6 @@
 	  background: rgba(0,0,0,.5);
 	  position              : relative;
 	  margin                : 0 1px;
-	  -moz-border-radius    : 3px;
-	  -webkit-border-radius : 3px;
 	  border-radius         : 3px;
 	}
 	.nano:hover > .nano-pane, .nano-pane.active, .nano-pane.flashed {
@@ -648,16 +641,19 @@ div#videowrap {
 	pointer-events: none;
 }
 #mHandle-left {
-	transform: translate(-21px, 0px); /*default -21px, 0*/
+	-webkit-transform: translate(-21px, 0px);
+	        transform: translate(-21px, 0px); /*default -21px, 0*/
 	border-radius: 3px 0 0 3px;
 }
 #mHandle-right {
-	transform: translate(-1px, 0px); /*default -1px, 0*/
+	-webkit-transform: translate(-1px, 0px);
+	        transform: translate(-1px, 0px); /*default -1px, 0*/
 	border-radius: 0 3px 3px 0;
 }
 #mHandle-mid {
 	width: 5px;
-	transform: translate(-6px, 0px);
+	-webkit-transform: translate(-6px, 0px);
+	        transform: translate(-6px, 0px);
 	opacity: 0;
 	pointer-events: none;
 }

@@ -276,7 +276,7 @@ $(".mHandle").mousedown(function() {
 	var handleOffset = $("#mHandle-left").width() + $("#mHandle-mid").width() + 1; //offset from positioning anchor
 	var bodyWidth = $("body").width();
 	var minX = 430;
-	var maxX = bodyWidth * .70;
+	var maxX = bodyWidth * .80;
 
 	$("#handleWidget").prop("style", ""); //reset css so that transforms don't affect measurements
 	$("#handleWidget").css("left", $("#splitRatio").attr("split")+"%").css("top", $("#mHandle-left").offset().top);
@@ -301,7 +301,7 @@ $(".mHandle").mousedown(function() {
 				$("#handleWidget").css("left", "430px");
 			}
 			else {
-				$("#handleWidget").css("left", "70%");
+				$("#handleWidget").css("left", "80%");
 			}
 		}
 	});
