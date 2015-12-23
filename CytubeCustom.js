@@ -242,12 +242,12 @@ $("#mainpage > .nano .nano-pane").hover(function(eventData) {
 	$("#mainpage").addClass("scrollHover").addClass("scrolling");
 	$(window).off("mousemove");
 }, function(eventData) {
-	if(eventData.which === 0) {
+	if(eventData.buttons == 0) {
 		$("#mainpage").removeClass("scrollHover").removeClass("scrolling");
 	}
 	else {
 		$(window).one("mousemove", function(eventData2){
-			if(eventData2.which === 0)
+			if(eventData2.buttons == 0)
 				$("#mainpage").removeClass("scrollHover").removeClass("scrolling");
 		});
 	}
@@ -287,7 +287,7 @@ $(".mHandle").mousedown(function() {
 		if (initialX == 'undefined') {
 			initialX = eventData.pageX;
 		}
-		if (eventData.which === 0) {
+		if (eventData.buttons == 0) {
 			$("body").off("mousemove");
 			$("#dragoverlay").removeClass("dragging");
 		}
@@ -326,8 +326,8 @@ new ResizeSensor($("#maincontain .container-fluid"),function() {
 //fix for scrolling when hovering over new YT embed
 $("#maincontain .nano-slider").mousedown(function() {
 	$("#main").addClass("disablehover");
-	$(".disablehover").mouseenter(function(eventData) {
-		if(eventData.which == 0) {
+	$("#main").mouseenter(function(eventData) {
+		if(eventData.buttons == 0) {
 			$("#main").removeClass("disablehover");
 			$(this).off("mouseenter");
 		}

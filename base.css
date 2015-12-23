@@ -8,22 +8,22 @@
 	}
 	.nano > .nano-content {
 	  position      : absolute;
-	  overflow      : hidden !important;
+	  overflow      : scroll;
 	  overflow-x    : hidden;
 	  top           : 0;
-	  right         : 0 !important;
+	  right         : 0;
 	  bottom        : 0;
 	  left          : 0;
-	  width: 100%;
+	  margin-right  : -1px;
 	}
 	.nano > .nano-content:focus {
 	  outline: thin dotted;
 	}
 	.has-scrollbar > .nano-content::-webkit-scrollbar {
-	  display: block;
+	  display: none;
 	}
 	.nano > .nano-content::-webkit-scrollbar {
-	  display: none;
+	  display: block;
 	}
 	.nano > .nano-pane {
 	  display: block;
@@ -196,7 +196,7 @@ div#videowrap {
 	}
 	#chatwrap .nano #messagebuffer {
 		height: 100% !important;
-		width: 100%
+		/*width: 100% DO NOT UNCOMMENT FOR COMPATIBILITY WITH NANOSCROLLER*/
 	}
 	#userlist {
 		height: calc(100% - 59px) !important;
@@ -229,7 +229,7 @@ div#videowrap {
 		overflow-y: visible; /*scroll pre-nano*/
 		overflow-x: hidden;
 		height: calc(100% - 60px);
-		padding: 0 9px 0 9px !important;
+		padding: 0 10px 0 9px !important;
 	}
 	#mainpage > .nano {
 		position: fixed;
@@ -279,14 +279,7 @@ div#videowrap {
 	}
 	#userlist {
 		width: 140px;
-	}
-	#userlist::-webkit-scrollbar {
-		width: 1px;
-	}
-	#userlist::-webkit-scrollbar-track {
-		display: none;
-		background: transparent;
-		border: 0;
+		overflow: visible;
 	}
 	#userlist {padding-left: 5px;}
 		/*profile boxes*/
