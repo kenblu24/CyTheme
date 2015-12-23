@@ -661,7 +661,7 @@ div#videowrap {
 	pointer-events: none;
 	z-index: 99999;
 }
-.dragging #dragoverlay {
+#dragoverlay.dragging {
 	visibility: visible;
 	pointer-events: auto;
 	background: hsla(0,0%,0%,0.3);
@@ -678,10 +678,4 @@ div#videowrap {
 }
 .dragging #handleWidget {
 	visibility: visible;
-}
-body.dragging {
-	-webkit-user-select: none;
-	   -moz-user-select: none;
-	    -ms-user-select: none;
-	        user-select: none;
 }
