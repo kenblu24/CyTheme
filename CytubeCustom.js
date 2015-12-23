@@ -282,7 +282,7 @@ $(".mHandle").mousedown(function() {
 	$("#handleWidget").css("left", $("#splitRatio").attr("split")+"%").css("top", $("#mHandle-left").offset().top);
 	initialF = $("#handleWidget").offset().left;
 	$("#handleWidget").css("transform", "translatex(-" + handleOffset + "px)");
-	$("#dragoverlay").addClass("dragging");
+	$("body").addClass("dragging");
 	$("body").mousemove(function(eventData) {
 		if (initialX == 'undefined') {
 			initialX = eventData.pageX;
