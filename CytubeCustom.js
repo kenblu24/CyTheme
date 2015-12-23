@@ -283,6 +283,7 @@ $(".mHandle").mousedown(function() {
 	initialF = $("#handleWidget").offset().left;
 	$("#handleWidget").css("transform", "translatex(-" + handleOffset + "px)");
 	$("#dragoverlay").addClass("dragging");
+	$("body").css("-moz-user-select: none");
 	$("body").mousemove(function(eventData) {
 		if (initialX == 'undefined') {
 			initialX = eventData.pageX;
@@ -290,6 +291,7 @@ $(".mHandle").mousedown(function() {
 		if (eventData.buttons == 0) {
 			$("body").off("mousemove");
 			$("#dragoverlay").removeClass("dragging");
+			$("body").css("-moz-user-select: none");
 		}
 		else {
 			var newx = eventData.pageX - initialX + initialF;
