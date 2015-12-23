@@ -14,6 +14,7 @@
 	  right         : 0 !important;
 	  bottom        : 0;
 	  left          : 0;
+	  width: 100%;
 	}
 	.nano > .nano-content:focus {
 	  outline: thin dotted;
@@ -163,6 +164,7 @@ div#videowrap {
 }
 #chatwrap {
 	padding: 0;
+	overflow: hidden;
 }
 #mainpage .container-fluid {
 	padding: 0;
@@ -172,7 +174,7 @@ div#videowrap {
 	float: left;
 	width: 100%;
 }
-@media (max-width: 992px){
+@media (max-width: 991.9px){
 	#mainpage > .nano {
 		position: static;
 	}
@@ -185,7 +187,7 @@ div#videowrap {
 	#mainpage > .nano > .nano-pane {
 		display: none;
 	}
-	#mainpage > .nano .nano-content {
+	.nano .nano-content {
 		position: relative;
 		overflow: visible;
 	}
@@ -626,17 +628,24 @@ div#videowrap {
 	}
 
 /* Divider Dragger */
-#mHandle-left, #mHandle-right {
+.mHandle {
 	position: absolute;
 	width: 15px;
 	height: 25px;
 	left: 55%; /*default 55%*/
 	background: white;
+	cursor: col-resize;
+	visibility: hidden;
 	opacity: 0;
-	transition: opacity ease .2s;
+	transition: opacity ease .2s, visibility .05s;/*visibility hidden because opacity: 0 is not the same as display: block. */
+	/* Needs to be a delay because moving cursor from scroll would otherwise make mhandle disappear. Display cannot have transitions.*/
 }
-.scrollHover #mHandle-left, .scrollHover #mHandle-right {
+.scrollHover .mHandle, .mHover #mHandle-mid, .mHover .mHandle {
 	opacity: .99;
+	visibility: visible;
+}
+.scrolling .mHandle{
+	pointer-events: none;
 }
 #mHandle-left {
 	transform: translate(-21px, 0px); /*default -21px, 0*/
@@ -645,4 +654,39 @@ div#videowrap {
 #mHandle-right {
 	transform: translate(-1px, 0px); /*default -1px, 0*/
 	border-radius: 0 3px 3px 0;
+}
+#mHandle-mid {
+	width: 5px;
+	transform: translate(-6px, 0px);
+	opacity: 0;
+	pointer-events: none;
+}
+/* Dragging */
+#dragoverlay {
+	position: absolute;
+	visibility: hidden;
+	width: 100%;
+	height: 100%;
+	background: none;
+	transition: background ease .5s, visibility 1s;
+	pointer-events: none;
+	z-index: 99999;
+}
+#dragoverlay.dragging {
+	visibility: visible;
+	pointer-events: auto;
+	background: hsla(0,0%,0%,0.3);
+}
+#handleWidget {
+	visibility: hidden;
+	position: absolute;
+	width: 35px;
+	height: 25px;
+	left: 55%; /*default 55%*/
+	border-radius: 3px;
+	background: white;
+	cursor: col-resize;
+}
+.dragging #handleWidget {
+	visibility: visible;
 }

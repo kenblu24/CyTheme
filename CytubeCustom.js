@@ -20,8 +20,8 @@ console.log("ranscript");
 $("body").addClass("darktheme");
 
 //add settings to user prefs modal
-$("#useroptions .modal-header .nav.nav-tabs").append("<li class> <a href='#us-cytheme-controls' data-toggle='tab'>CyTheme Options</a></li>")
-$("#useroptions .modal-body .tab-content").append("<div id='us-cytheme-controls' class='tab-pane'><h4>CyTheme Options</h4><form action='javascript:void(0)' class='form-horizontal'></form></div>")
+$("#useroptions .modal-header .nav.nav-tabs").append("<li class> <a href='#us-cytheme-controls' data-toggle='tab'>CyTheme Options</a></li>");
+$("#useroptions .modal-body .tab-content").append("<div id='us-cytheme-controls' class='tab-pane'><h4>CyTheme Options</h4><form action='javascript:void(0)' class='form-horizontal'></form></div>");
 
 //site and channel descriptors
 $("#controlsrow").after($("#motdrow"));//move channel description (motd) below controls
@@ -81,7 +81,10 @@ $("#chatwrap .nano").append($("#messagebuffer"));
 
 $(".nano").nanoScroller();
 
-$("#mainpage").append("<div id='mHandle-left'></div> <div id='mHandle-right'></div>");
+//middle draggable handle
+$("#mainpage").append("<div id='mHandle-left' class='mHandle'></div> <div id='mHandle-right' class='mHandle'></div><div id='mHandle-mid' class='mHandle'></div>");
+$("body").prepend("<div id='dragoverlay'><div class='l'></div><div class='r'></div><div id='handleWidget'></div></div>");
+$("#mainpage").append("<style id='splitRatio' split='55'>@media (min-width: 992px) {#mainpage > .nano {width: 55%;} #chatwrap {width: 44.9%;}}</style>");
 
 
 _timeVIDEBLU = {raw: 0, ofs: 0, paused: false};//Define time object for ss7's video time display plugin
@@ -199,7 +202,7 @@ setvideotime = function() {
 	if (m < 10) { m = '0'+m; }//9:9:09  ->  9:09:09
 	if (h < 10) { h = '0'+h; }//9:09:09 ->  09:09:09
 	if (currentmedia.seconds > 3598) {$('#ss7time').text(h+':'+m+':'+s);}//if media is longer than an hour
-	else if (h === 0) {$('#ss7time').text(m+':'+s);}//if less than an hour do not display hour metric
+	else if (h == 0) {$('#ss7time').text(m+':'+s);}//if less than an hour do not display hour metric
 	else if (currentmedia.length == "--:--") {$('#ss7time').text("Live")}// if "--:--" is length, set duration to "Live"
 }
 setvideotime();
@@ -213,7 +216,7 @@ $("#addmedia").click(function(){ //Add Media button action
 				}
 				return false;
 			}//if button is clickable
-		});
+		})
 		$("#rightpane").slideDown(trnsdelay);
 	}
 	else {
@@ -230,29 +233,80 @@ var updateScrollHandles = function() {
 	var scrollbarOffset = scrollbar.height()/2 + Number(scrollbar.attr("style").match(/\d+(?:.\d+)*(?=px\))/));
 	$("#mHandle-left").attr("style", "transform: translate(" + (0 - $("#mHandle-left").width() - scrollbar.width() - 1) + "px, " + (scrollbarOffset + $("#mHandle-left").height()/2) + "px);");
 	$("#mHandle-right").attr("style", "transform: translate(-1px, "+ (scrollbarOffset + $("#mHandle-right").height()/2) + "px);");
+	$("#mHandle-mid").attr("style", "transform: translate(" + (0 - scrollbar.width() - 1) + "px, " + (scrollbarOffset + $("#mHandle-mid").height()/2) + "px);");
+	$(".mHandle").css("left", $("#splitRatio").attr("split") + "%");
 }
 
 $("#mainpage > .nano .nano-pane").hover(function(eventData) {
 	updateScrollHandles();
-	$("#mainpage").addClass("scrollHover");
+	$("#mainpage").addClass("scrollHover").addClass("scrolling");
 	$(window).off("mousemove");
 }, function(eventData) {
 	if(eventData.which === 0) {
-		$("#mainpage").removeClass("scrollHover");
+		$("#mainpage").removeClass("scrollHover").removeClass("scrolling");
 	}
 	else {
 		$(window).one("mousemove", function(eventData2){
 			if(eventData2.which === 0)
-				$("#mainpage").removeClass("scrollHover");
+				$("#mainpage").removeClass("scrollHover").removeClass("scrolling");
 		});
 	}
-});
+})
 
 $("#mainpage > .nano .nano-content").scroll(function() {
 	updateScrollHandles();
 });
 
-//$()
+$(".mHandle").mouseenter(function() {
+	$("#mainpage").addClass("mHover");
+});
+$(".mHandle").mouseleave(function() {
+	$("#mainpage").removeClass("mHover");
+});
+
+var updateSplitRatio = function(ratio) {
+	ratio = Math.floor(ratio * 10)/10;
+	var rightRatio = 100 - ratio - 0.1;
+	$("#splitRatio").text("@media (min-width: 992px) {#mainpage > .nano {width: " + ratio + "%;} #chatwrap {width: " + rightRatio + "%;}}");
+	$("#splitRatio").attr("split", ratio + "");
+};
+$(".mHandle").mousedown(function() {
+	var initialX = 'undefined';
+	var initialF = 'undefined';
+	var handleOffset = $("#mHandle-left").width() + $("#mHandle-mid").width() + 1; //offset from positioning anchor
+	var bodyWidth = $("body").width();
+	var minX = 430;
+	var maxX = bodyWidth * .70;
+
+	$("#handleWidget").prop("style", ""); //reset css so that transforms don't affect measurements
+	$("#handleWidget").css("left", $("#splitRatio").attr("split")+"%").css("top", $("#mHandle-left").offset().top);
+	initialF = $("#handleWidget").offset().left;
+	$("#handleWidget").css("transform", "translatex(-" + handleOffset + "px)");
+	$("#dragoverlay").addClass("dragging");
+	$("body").mousemove(function(eventData) {
+		if (initialX == 'undefined') {
+			initialX = eventData.pageX;
+		}
+		if (eventData.which === 0) {
+			$("body").off("mousemove");
+			$("#dragoverlay").removeClass("dragging");
+		}
+		else {
+			var newx = eventData.pageX - initialX + initialF;
+			if(newx > minX && newx < maxX) {
+				$("#handleWidget").css("left", newx + "px");
+				updateSplitRatio(($("#handleWidget").offset().left + handleOffset) / bodyWidth * 100);
+			}
+			else if (newx < minX) {
+				$("#handleWidget").css("left", "430px");
+			}
+			else {
+				$("#handleWidget").css("left", "70%");
+			}
+		}
+	});
+
+});
 
 //update scrollbar when chat changes
 var observer = new MutationObserver(function(mutations) {
@@ -263,10 +317,8 @@ var observer = new MutationObserver(function(mutations) {
 var config = { attributes: true, childList: true, characterData: true };
 observer.observe(document.querySelector('#messagebuffer'), config);
 
-$(window).resize(function() {$(".nano").nanoScroller()});
-//$("#mainpage .nano").ready(function() {$(".nano").nanoScroller(); console.log("wazzup")});
-
-
+//update scrollbars when window is resized
+$(window).resize(function() {$(".nano").nanoScroller();});
 new ResizeSensor($("#maincontain .container-fluid"),function() {
 	$("#mainpage > .nano").nanoScroller();
 });

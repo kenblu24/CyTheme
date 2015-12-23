@@ -17,9 +17,13 @@
 ::-webkit-scrollbar-corner {background-color:rgba(26,26,26,1);}
 
 .darktheme .nano > .nano-pane > .nano-slider {
-	background: hsla(0,0%,100%,.56);
+	background: hsla(0,0%,100%,.4);
 	width: 5px;
 	float: right;
+	transition: background ease .2s;
+}
+.darktheme .nano > .nano-pane > .nano-slider:hover, .darktheme .scrolling .nano-slider {
+	background: hsla(0,0%,100%,.56);
 }
 .darktheme .nano > .nano-pane {
 	background: none;
