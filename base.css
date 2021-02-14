@@ -154,6 +154,7 @@ input[type="checkbox"]:checked:after {
 div#videowrap {
 	margin-bottom: 9px !important;
 	float: none !important;
+	z-index: 999 !important;
 }
 #chatwrap {
 	padding: 0;
